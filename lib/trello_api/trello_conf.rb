@@ -1,6 +1,7 @@
+require 'yaml'
+
 module TrelloConf
-  URL = "https://api.trello.com"
-  def get_keys
-    YAML.load_file((File.join(Rails.root, '.trellorc')))
-  end
+  URL = 'https://api.trello.com'
+  V = '1'
+  KEYS = YAML.load_file('../../.trellorc')
 end
