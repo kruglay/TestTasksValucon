@@ -17,7 +17,7 @@ class TrelloCard
     uri       = URI.parse(query_str)
     resp      = Net::HTTP.post_form(uri, params)
 
-    #check response
+    # check response
     begin
       resp.value
       JSON.parse(resp.body)

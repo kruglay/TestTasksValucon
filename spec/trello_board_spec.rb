@@ -1,12 +1,12 @@
-require "rails_helper"
+require 'rails_helper'
 require_relative '../lib/trello_api/trello_board'
 require_relative '../lib/trello_api/trello_conf'
 
 describe TrelloBoard do
   before :each do
-    @body     = File.read(__dir__ + "/fixtures/board.json")
+    @body     = File.read(__dir__ + '/fixtures/board.json')
     query_str = TrelloConf.get_query_string(:board, '58ded028055c3564f08ab422')
-    stub_request(:get, query_str).to_return(:body => @body, :status => 200, :headers => {})
+    stub_request(:get, query_str).to_return(body: @body, status: 200, headers: {})
     @board = TrelloBoard.new('58ded028055c3564f08ab422')
   end
 
@@ -19,17 +19,17 @@ describe TrelloBoard do
 
     it 'raise exception' do
       query_str = TrelloConf.get_query_string(:board, '123')
-      body = File.read(__dir__ + "/fixtures/invalid_id.json")
-      stub_request(:get, query_str).to_return(:body => body, :status => 400, :headers => {})
-      expect{TrelloBoard.find_board('123')}.to raise_exception(RuntimeError)
+      body      = File.read(__dir__ + '/fixtures/invalid_id.json')
+      stub_request(:get, query_str).to_return(body: body, status: 400, headers: {})
+      expect { TrelloBoard.find_board('123') }.to raise_exception(RuntimeError)
     end
   end
 
   describe '#list_exist' do
     before :each do
-      body      = File.read(__dir__ + "/fixtures/lists.json")
+      body      = File.read(__dir__ + '/fixtures/lists.json')
       query_str = TrelloConf.get_query_string(:lists, '58ded028055c3564f08ab422')
-      stub_request(:get, query_str).to_return(:body => body, :status => 200, :headers => {})
+      stub_request(:get, query_str).to_return(body: body, status: 200, headers: {})
     end
 
     it 'return true' do
@@ -43,24 +43,23 @@ describe TrelloBoard do
 
   describe '#create_card' do
     before :each do
-      body      = File.read(__dir__ + "/fixtures/lists.json")
+      body      = File.read(__dir__ + '/fixtures/lists.json')
       query_str = TrelloConf.get_query_string(:lists, '58ded028055c3564f08ab422')
-      stub_request(:get, query_str).to_return(:body => body, :status => 200, :headers => {})
+      stub_request(:get, query_str).to_return(body: body, status: 200, headers: {})
 
-      @body      = File.read(__dir__ + "/fixtures/card.json")
+      @body     = File.read(__dir__ + '/fixtures/card.json')
       query_str = TrelloConf.get_query_string(:card)
-      stub_request(:post, query_str).to_return(:body => @body, :status => 200, :headers => {})
+      stub_request(:post, query_str).to_return(body: @body, status: 200, headers: {})
     end
 
     it 'create card and return card hash' do
-      expect(@board.create_card!(title: "4sometitle4", description: "somedescription",
-                                   list_id: "58ded035b5a575cdb375a48b")).to eq JSON.parse(@body)
-
+      expect(@board.create_card!(title:   '4sometitle4', description: 'somedescription',
+                                 list_id: '58ded035b5a575cdb375a48b')).to eq JSON.parse(@body)
     end
 
     it "doesn't create card" do
-      expect(@board.create_card!(title: "4sometitle4", description: "somedescription",
-                                 list_id: "123")).to be_nil
+      expect(@board.create_card!(title:   '4sometitle4', description: 'somedescription',
+                                 list_id: '123')).to be_nil
     end
   end
 end
