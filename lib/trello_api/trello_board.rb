@@ -22,12 +22,11 @@ class TrelloBoard
   end
 
   def list_exist?(list_id)
-    keys      = TrelloConf::KEYS
-    query_str = "/#{TrelloConf::V}/boards/#{@id}/lists?key=#{keys['developer_public_key']}&token=#{keys['member_token']}"
-    uri       = URI.parse(TrelloConf::URL + query_str)
+    query_str = TrelloConf.get_query_string(:lists, @id)
+    uri       = URI.parse(query_str)
     resp      = Net::HTTP.get_response(uri)
 
-    #check response
+    # check response
     begin
       resp.value
       lists = JSON.parse(resp.body)
@@ -35,21 +34,17 @@ class TrelloBoard
     rescue
       raise resp.body
     end
-
-
   end
 
   def create_card!(options = {})
-    TrelloCard.new(options) if list_exist?(options[:list_id])
+    TrelloCard.create_card!(options) if list_exist?(options[:list_id])
   end
 
   def self.find_board(id)
-    keys      = TrelloConf::KEYS
-    query_str = "/#{TrelloConf::V}/boards/#{id}?key=#{keys['developer_public_key']}&token=#{keys['member_token']}"
-    uri       = URI.parse(TrelloConf::URL + query_str)
+    query_str = TrelloConf.get_query_string(:board, id)
+    uri       = URI.parse(query_str)
     resp      = Net::HTTP.get_response(uri)
-
-    #check response
+    # check response
     begin
       resp.value
       JSON.parse(resp.body)
