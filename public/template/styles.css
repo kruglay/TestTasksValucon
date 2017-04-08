@@ -1,0 +1,39 @@
+.block {
+  display: flex;
+  padding: 10px;
+}
+
+.image {
+  flex: 1;
+  min-width: 50px;
+  background-image:url("images.jpg");
+  background-size: contain;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.text {
+  flex: 5;
+  min-width: 590px;
+}
+
+@media screen and (max-width: 640px){
+  .text {
+    cursor: pointer;
+  }
+
+  .image {
+    min-height: 568px;
+  }
+
+  .noDisplay {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1536px){
+  .text {
+    flex: 4;
+  }
+}
