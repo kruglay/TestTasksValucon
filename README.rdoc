@@ -23,3 +23,5 @@ All files are located in +HOME/lib/trello_api+
 A responsive design to be as close as possible to mockups.
 
 put +/template+ to see the page
+=======
+
