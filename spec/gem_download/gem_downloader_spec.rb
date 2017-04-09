@@ -36,7 +36,7 @@ describe GemDownloader do
     end
 
     it 'save gem file' do
-      GemDownloader::downlod_gem(@name, @data)
+      GemDownloader::download_gem(@name, @data)
       expect(File.exist?(GemDownloader::PATH + @name)).to be_truthy
 
       # delete file after creation
@@ -45,7 +45,7 @@ describe GemDownloader do
 
     it 'add record' do
       record = nil
-      expect { record = GemDownloader::downlod_gem(@name, @data) }.
+      expect { record = GemDownloader::download_gem(@name, @data) }.
           to change(Record, :count).by(1)
       expect(record.version).to eq '1'
       expect(record.gem_copy).to eq GemDownloader::PATH + @name

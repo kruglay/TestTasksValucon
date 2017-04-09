@@ -5,6 +5,6 @@ class DownloadGemWorker
   sidekiq_options retry: false
 
   def perform(name, data)
-    GemDownloader.downlod_gem(name, data)
+    GemDownloader.download_gem(name, data)
   end
 end

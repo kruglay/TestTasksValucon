@@ -43,7 +43,7 @@ class GemDownloader
       end
     end
 
-    def downlod_gem(name, data)
+    def download_gem(name, data)
       query_str = URL + name
       uri       = URI.parse(query_str)
       resp      = Net::HTTP.get_response(uri)
