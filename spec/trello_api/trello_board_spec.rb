@@ -1,6 +1,6 @@
 require 'rails_helper'
-require_relative '../lib/trello_api/trello_board'
-require_relative '../lib/trello_api/trello_conf'
+require_relative '../../lib/trello_api/trello_board'
+require_relative '../../lib/trello_api/trello_conf'
 
 describe TrelloBoard do
   before :each do

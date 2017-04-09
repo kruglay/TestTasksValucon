@@ -7,7 +7,6 @@ class GemDownloader
 
   class << self
     # check gem versions in local data base
-    # and download it if didn't find
     def check_versions(name)
       data = gem_data(name)
       find_files(name, data)
@@ -31,6 +30,8 @@ class GemDownloader
       "#{name}-#{vers}.gem"
     end
 
+    # find local gem files
+    # and download it if didn't find
     def find_files(name, data)
       data.each do |ver|
         rec = Record.find_by(version: ver['number'])
@@ -55,12 +56,12 @@ class GemDownloader
       # save file
       File.open(PATH + name, "wb") do |file|
         file.write(resp.body)
-        Record.create(
-                      version:  data['number'].to_s,
-                      gem_copy: PATH + name,
-                      sha:      data['sha']
-        )
       end
+      Record.create(
+          version:  data['number'].to_s,
+          gem_copy: PATH + name,
+          sha:      data['sha']
+      )
     end
   end
 end
