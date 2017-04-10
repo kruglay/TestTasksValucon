@@ -1,5 +1,10 @@
 == Test tasks
 
+After clone application put in console
+
+  bundle install
+  bundle exec rake db:migrate
+
 ===№2 Trello wrapper
 
 Use Trello API to fit following flow of usage
