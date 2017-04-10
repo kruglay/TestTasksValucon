@@ -16,7 +16,7 @@ All files are located in +HOME/lib/trello_api+
 
 ==== Usage
 
-Put in console
+Put in Rails console
 
   require_relative 'lib/trello_api/trello_board'
   board = TrelloBoard.new(boardid: "someid")
