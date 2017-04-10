@@ -4,19 +4,41 @@
 
 Use Trello API to fit following flow of usage
 
-
-  board = TrelloBoard.new(boardid: "someid")
-  board.create_card!(title: "sometitle", description: "somedescription", list_id: "SomeID")
-
+==== Configuration
 
 Add +HOME/.trellorc+ file with format
 
   developer_public_key: <key>
   member_token: <token>
 
-to authenticate to trello API.
-
+to authenticate to trello API. <key> and <token> you can get here https://trello.com/app-key
 All files are located in +HOME/lib/trello_api+
+
+==== Usage
+
+Put in console
+
+  require_relative 'lib/trello_api/trello_board'
+  board = TrelloBoard.new(boardid: "someid")
+  board.create_card!(title: "sometitle", description: "somedescription", list_id: "SomeID")
+
+===№3 Rake Task and Sidekiq Worker
+
+Rake task that query Rubygems API for all the versions of Rails gem.
+Check versions in local DB and download it if not found.
+
+====Configuration
+
+Change +PATH+ constant in +HOME/lib/gem_download/gem_downloader.rb+ to your path,
+where you want to save gem files.
+
+====Usage
+
+Put in console
+
+  rake 'check_gems[gem_name]'
+
+to check gem with name 'gem_name'
 
 ===№4 Template
 

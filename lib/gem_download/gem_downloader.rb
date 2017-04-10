@@ -1,9 +1,9 @@
 require File.expand_path('../../../config/environment', __FILE__)
 
 class GemDownloader
-  API_URL  = 'https://rubygems.org/api/v1/versions/'
-  URL = 'https://rubygems.org/downloads/'
-  PATH = '/home/kruglay/gems/'
+  API_URL = 'https://rubygems.org/api/v1/versions/'
+  URL     = 'https://rubygems.org/downloads/'
+  PATH    = '/home/kruglay/gems/' #write here path to save files
 
   class << self
     # check gem versions in local data base
@@ -54,14 +54,12 @@ class GemDownloader
       end
 
       # save file
-      File.open(PATH + name, "wb") do |file|
+      File.open(PATH + name, 'wb') do |file|
         file.write(resp.body)
       end
-      Record.create(
-          version:  data['number'].to_s,
-          gem_copy: PATH + name,
-          sha:      data['sha']
-      )
+      Record.create(version:  data['number'].to_s,
+                    gem_copy: PATH + name,
+                    sha:      data['sha'])
     end
   end
 end
