@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>TestTasksValucon</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if flash.any? %>
+    <% flash.each do |name, message| %>
+        <div class="content-wrapper">
+          <%= content_tag :div, message, class: "alert alert-success" %>
+        </div>
+    <% end %>
+<% end %>
 
 <%= yield %>
 
