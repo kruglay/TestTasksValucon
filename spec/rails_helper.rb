@@ -27,6 +27,21 @@ WebMock.disable_net_connect!(allow_localhost: true)
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+
+    # Choose one or more libraries:
+    with.library :active_record
+    with.library :active_model
+    with.library :action_controller
+    # Or, choose the following (which implies all of the above):
+    with.library :rails
+  end
+end
+
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
