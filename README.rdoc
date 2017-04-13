@@ -5,6 +5,16 @@ After clone application put in console
   bundle install
   bundle exec rake db:migrate
 
+===№1 Feedback module
+
+RSpec+capybara test for feedback form.
+
+====Usage
+
+Visit main paige, click link +Feed back+ than put email format: +example@mail.com+
+write some text into text field and click 'Send' button. You will be redirected to
++contacts/new+
+
 ===№2 Trello wrapper
 
 Use Trello API to fit following flow of usage

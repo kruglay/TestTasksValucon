@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "contacts/new", type: :view do
   it 'render email, text, button, error messages' do
-    @contact = Contact.new(email:"123", text:"message")
+    @contact = Contact.new(email: "123", text: "message")
     @contact.valid?
     render
 
@@ -13,7 +13,7 @@ RSpec.describe "contacts/new", type: :view do
   end
 
   it 'not render errors' do
-    @contact = Contact.new(email:"123@n.ry", text:"message")
+    @contact = Contact.new(email: "123@n.ry", text: "message")
     @contact.valid?
     render
 

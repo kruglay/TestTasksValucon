@@ -20,7 +20,5 @@ RSpec.feature 'create contact', type: :feature do
     expect(page).to have_content 'Message sent'
     expect(find_field('contact_email').text).to eq ''
     expect(find_field('contact_text').text).to eq ''
-
-    save_and_open_page
   end
 end

@@ -10,9 +10,10 @@ RSpec.describe ContactsController, type: :controller do
   end
 
   describe "POST #contacts" do
-
     it "create contact" do
-      post :create, contact: { email:"123@r.com", text:"message" }
+      expect {
+        post :create, contact: { email: "123@r.com", text: "message" }
+      }.to change(Contact, :count).by(1)
 
       contact = assigns(:contact)
 
@@ -23,7 +24,9 @@ RSpec.describe ContactsController, type: :controller do
     end
 
     it 'not create contact, render new' do
-      post :create, contact: { email:"123", text:"message" }
+      expect {
+        post :create, contact: { email: "123", text: "message" }
+      }.not_to change(Contact, :count)
 
       contact = assigns(:contact)
 
