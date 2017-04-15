@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414201041) do
+ActiveRecord::Schema.define(version: 20170415185726) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "email"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20170414201041) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string   "image"
     t.string   "image_uid"
     t.string   "image_name"
     t.datetime "created_at", null: false

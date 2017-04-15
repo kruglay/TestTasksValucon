@@ -1,4 +1,5 @@
 require 'dragonfly'
+require 'dragonfly/s3_data_store'
 
 # Configure
 Dragonfly.app.configure do
@@ -8,9 +9,10 @@ Dragonfly.app.configure do
 
   url_format "/media/:job/:name"
 
-  datastore :file,
-    root_path: Rails.root.join('public/system/dragonfly', Rails.env),
-    server_root: Rails.root.join('public')
+  datastore :s3,
+    bucket_name: 'test-valucon',
+    access_key_id: 'AKIAIJ3BOCHB5TO3FYIQ',
+    secret_access_key: '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'
 end
 
 # Logger
