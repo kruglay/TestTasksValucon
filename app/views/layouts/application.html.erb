@@ -12,7 +12,7 @@
 <% if flash.any? %>
     <% flash.each do |name, message| %>
         <div class="content-wrapper">
-          <%= content_tag :div, message, class: "alert alert-success" %>
+          <%= content_tag :div, message, class: "alert alert-#{name == 'alert' ? 'danger' : 'success'}" %>
         </div>
     <% end %>
 <% end %>

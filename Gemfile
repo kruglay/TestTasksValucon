@@ -27,6 +27,8 @@ gem 'rubocop', '~> 0.48.1'
 gem 'webmock', '~> 2.3', '>= 2.3.2'
 gem 'therubyracer', '~> 0.12.3'
 gem 'sidekiq'
+gem 'dragonfly', '~> 1.1.1'
+gem 'dragonfly-s3_data_store'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

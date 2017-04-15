@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411182703) do
+ActiveRecord::Schema.define(version: 20170414201041) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "email"
     t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "image"
+    t.string   "image_uid"
+    t.string   "image_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

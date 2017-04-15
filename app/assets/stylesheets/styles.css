@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+}
+
+.photos_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+img {
+    margin: 5px;
+}

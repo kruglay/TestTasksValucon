@@ -1,0 +1,22 @@
+<h1>Photos</h1>
+<div class="container">
+  <div class="photos_container">
+    <% @photos.each do |photo| %>
+        <%= image_tag photo.image.thumb('100x100#').url if photo.image_stored? %>
+    <% end %>
+  </div>
+
+  <div class="add_photo">
+    <%= form_for @new_photo do |f| %>
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image %>
+        </div>
+        <div class="actions">
+          <%= f.submit 'Add', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+
