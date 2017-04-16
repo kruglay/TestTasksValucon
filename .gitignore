@@ -18,3 +18,4 @@
 .idea
 .trellorc
 /lib/trello_ape/test.rb
+/config/secrets.yml

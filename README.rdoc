@@ -60,4 +60,30 @@ to check gem with name 'gem_name'
 A responsive design.
 
 put +/template+ to see the page
+
+===№5 Storage
+
+Allow to add pictures via S3 Amazon services.
+Use dragonfly gem to add picrures.
+Shows all uploaded pictures in 100x100px format.
+
+====Configuration
+
+Add S3 variables to environments in secrets.yml for example
+
+ development:
+     ENV:
+         S3_BUCKET_NAME: 'your bucket name'
+         S3_ACCESS_KEY:  'your access_key_id'
+         S3_SECRET_KEY:  'your secret_access_key'
+
+Configure dragonfly.rb file by your S3 variables from secrets.yml:
+
+  datastore :s3,
+    bucket_name:       ENV['S3_BUCKET_NAME'],
+    access_key_id:     ENV['S3_ACCESS_KEY'],
+    secret_access_key: ENV['S3_SECRET_KEY']
+
+See https://github.com/markevans/dragonfly-s3_data_store for more information about configure dragonfly.rb.
+
 =======
