@@ -1,5 +1,7 @@
 == Test tasks
 
+Text of test tasks https://github.com/kruglay/TestTasksValucon/blob/master/public/test_tasks.pdf
+
 After clone application put in console
 
   bundle install
