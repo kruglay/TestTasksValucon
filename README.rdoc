@@ -36,7 +36,7 @@ All files are located in +HOME/lib/trello_api+
 Put in Rails console
 
   require_relative 'lib/trello_api/trello_board'
-  board = TrelloBoard.new(boardid: "someid")
+  board = TrelloBoard.new("someid") # your trello board id
   board.create_card!(title: "sometitle", description: "somedescription", list_id: "SomeID")
 
 ===№3 Rake Task and Sidekiq Worker
