@@ -1,0 +1,3 @@
+api_url:  'https://rubygems.org/api/v1/versions/' # api url
+url:      'https://rubygems.org/downloads/'       # url for download
+path:     '/home/some_user/gems/'                 # local path for saving gems

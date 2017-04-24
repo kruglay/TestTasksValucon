@@ -10,7 +10,7 @@ describe GemDownloader do
     it 'return gem hash' do
       name      = 'webinfo'
       body      = File.read(__dir__ + '/fixtures/data.json')
-      query_str = GemDownloader::API_URL + name + '.json'
+      query_str = File.join(CONFIG[:api_url], name + '.json')
       stub_request(:get, query_str).to_return(body: body, status: 200, headers: {})
 
       expect(GemDownloader.gem_data(name)).to eq JSON.parse(body)
@@ -18,7 +18,7 @@ describe GemDownloader do
 
     it 'raise error' do
       name      = '123'
-      query_str = GemDownloader::API_URL + name + '.json'
+      query_str = File.join(CONFIG[:api_url], name + '.json')
       stub_request(:get, query_str).to_return(body:   'This rubygem could not be found.',
                                               status: 400, headers: {})
 
@@ -30,17 +30,17 @@ describe GemDownloader do
     before(:each) do
       @name     = 'file-1.gem'
       body      = File.binread(__dir__ + '/fixtures/file-1.gem')
-      query_str = GemDownloader::URL + @name
+      query_str = File.join(CONFIG[:url], @name)
       @data     = { 'number' => 1, 'sha' => '123' }
       stub_request(:get, query_str).to_return(body: body, status: 200, headers: {})
     end
 
     it 'save gem file' do
       GemDownloader.download_gem(@name, @data)
-      expect(File.exist?(GemDownloader::PATH + @name)).to be_truthy
+      expect(File.exist?(File.join(CONFIG[:path], @name))).to be_truthy
 
       # delete file after creation
-      File.delete(GemDownloader::PATH + @name)
+      File.delete(File.join(CONFIG[:path], @name))
     end
 
     it 'add record' do
@@ -48,7 +48,7 @@ describe GemDownloader do
       expect { record = GemDownloader.download_gem(@name, @data) }
           .to change(Record, :count).by(1)
       expect(record.version).to eq '1'
-      expect(record.gem_copy).to eq GemDownloader::PATH + @name
+      expect(record.gem_copy).to eq File.join(CONFIG[:path], @name)
       expect(record.sha).to eq '123'
     end
   end
@@ -75,12 +75,12 @@ describe GemDownloader do
       Record.create(version: '1', gem_copy: name, sha: sha)
 
       allow(SearchLocalFileWorker).to receive(:perform_async)
-          .with(GemDownloader::PATH + name, data[0], sha)
+          .with(File.join(CONFIG[:path], name), data[0], sha)
 
       GemDownloader.find_files(name, data)
 
       expect(SearchLocalFileWorker).to have_received(:perform_async)
-          .with(GemDownloader::PATH + name, data[0], sha)
+          .with(File.join(CONFIG[:path], name), data[0], sha)
     end
 
     it 'call DownloadGemWorker.perform_async' do
