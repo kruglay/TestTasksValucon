@@ -19,3 +19,4 @@
 .trellorc
 /lib/trello_ape/test.rb
 /config/secrets.yml
+/config/app.yml

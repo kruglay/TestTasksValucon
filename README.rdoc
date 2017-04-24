@@ -44,8 +44,13 @@ Check versions in local DB and download it if not found.
 
 ====Configuration
 
-Change +PATH+ constant in +HOME/lib/gem_download/gem_downloader.rb+ to your path,
-where you want to save gem files.
+Copy config/app.expample.yml to config/app.yml and put your settings
+
+  cp config/app.example.yml config/app.yml
+
+Change local path to save gems
+
+  path:'/home/some_user/gems/' # local path for saving gems
 
 ====Usage
 
