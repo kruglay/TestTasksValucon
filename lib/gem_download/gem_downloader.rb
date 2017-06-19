@@ -30,7 +30,7 @@ class GemDownloader
     # and download it if didn't find
     def find_files(name, data)
       data.each do |ver|
-        rec = Record.find_by(version: ver['number'])
+        rec = Record.where(name: name, version: ver['number'])
         if rec.blank?
           DownloadGemWorker.perform_async(full_name(name, ver['number']), ver)
         else
@@ -49,13 +49,18 @@ class GemDownloader
         raise resp.body
       end
 
+      #check path
+      FileUtils.mkdir_p(CONFIG[:path]) unless Dir.exist?(CONFIG[:path])
       # save file
       File.open(File.join(CONFIG[:path], name), 'wb') do |file|
         file.write(resp.body)
       end
-      Record.create(version:  data['number'].to_s,
-                    gem_copy: File.join(CONFIG[:path], name),
-                    sha:      data['sha'])
+      Record.create(
+          version:  data['number'].to_s,
+          gem_copy: File.join(CONFIG[:path], name),
+          sha:      data['sha'],
+          name: name
+      )
     end
   end
 end

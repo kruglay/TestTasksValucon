@@ -40,8 +40,35 @@ class TrelloBoard
     TrelloCard.create_card!(options) if list_exist?(options[:list_id])
   end
 
+  def lists
+    query_str = TrelloConf.get_query_string(:lists, @id)
+    uri       = URI.parse(query_str)
+    resp      = Net::HTTP.get_response(uri)
+
+    # check response
+    begin
+      resp.value
+      JSON.parse(resp.body)
+    rescue
+      raise resp.body
+    end
+  end
+
   def self.find_board(id)
     query_str = TrelloConf.get_query_string(:board, id)
+    uri       = URI.parse(query_str)
+    resp      = Net::HTTP.get_response(uri)
+    # check response
+    begin
+      resp.value
+      JSON.parse(resp.body)
+    rescue
+      raise resp.body
+    end
+  end
+
+  def self.list_boards
+    query_str = TrelloConf.get_query_string(:boards)
     uri       = URI.parse(query_str)
     resp      = Net::HTTP.get_response(uri)
     # check response

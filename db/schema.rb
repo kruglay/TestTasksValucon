@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415185726) do
+ActiveRecord::Schema.define(version: 20170619191227) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "email"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170415185726) do
     t.string "version"
     t.string "gem_copy"
     t.string "sha"
+    t.string "name"
   end
 
 end

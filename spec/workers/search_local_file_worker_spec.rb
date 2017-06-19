@@ -18,8 +18,7 @@ RSpec.describe SearchLocalFileWorker, type: :worker do
     }.to raise_error(RuntimeError, 'Local file not found')
   end
 
-  it "raise error 'Local file not found'" do
-
+  it "raise error 'SHA of version 1 does not match'" do
     expect {
       searcher.perform('spec/gem_download/fixtures/file-1.gem', data, '12')
     }.to raise_error(RuntimeError, 'SHA of version 1 does not match')
