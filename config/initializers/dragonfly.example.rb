@@ -5,7 +5,7 @@ require 'dragonfly/s3_data_store'
 Dragonfly.app.configure do
   plugin :imagemagick
 
-  secret "773f0803c677d52fb7974066f0195be7ec5fa7b1f7fa0d3c90013201891469dd"
+  secret "secret"
 
   url_format "/media/:job/:name"
 

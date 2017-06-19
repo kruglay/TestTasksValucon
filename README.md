@@ -49,7 +49,7 @@ Check versions in local DB and download it if not found.
 ####Configuration
 
 Copy config/app.expample.yml to config/app.yml and put your settings.
-Install [sidekiq](https://github.com/mperham/sidekiq)
+Before use sidekiq install [redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04)
 ```
   cp config/app.example.yml config/app.yml
 ```
@@ -88,13 +88,7 @@ Add S3 variables to environments in secrets.yml for example
          S3_ACCESS_KEY:  'your access_key_id'
          S3_SECRET_KEY:  'your secret_access_key'
 ```
-Configure dragonfly.rb file by your S3 variables from secrets.yml:
-```
-  datastore :s3,
-    bucket_name:       ENV['S3_BUCKET_NAME'],
-    access_key_id:     ENV['S3_ACCESS_KEY'],
-    secret_access_key: ENV['S3_SECRET_KEY']
-```
-See https://github.com/markevans/dragonfly-s3_data_store for more information about configure dragonfly.rb.
+Use dragonfly.example.rb as the example to configure dragonfly.rb.
+Look https://github.com/markevans/dragonfly-s3_data_store for more information about configure dragonfly.rb.
 
 ======
