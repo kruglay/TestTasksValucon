@@ -57,7 +57,7 @@ Change local path to save gems
 ```
   path:'/home/some_user/gems/' # local path for saving gems
 ```
-####Usage
+#### Usage
 
 Put in console
 ```
