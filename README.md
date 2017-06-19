@@ -1,4 +1,4 @@
-##Test tasks
+## Test tasks
 
 Text of test tasks https://github.com/kruglay/TestTasksValucon/blob/master/public/test_tasks.pdf
 
@@ -7,17 +7,17 @@ After clone application put in console
   bundle install
   bundle exec rake db:migrate
 ```
-###№1 Feedback module
+### №1 Feedback module
 
 RSpec+capybara test for feedback form.
 
-####Usage
+#### Usage
 
 Visit main paige, click link `Feed back` than put email format: `example@mail.com`
 write some text into text field and click 'Send' button. You will be redirected to
 `contacts/new`
 
-###№2 Trello wrapper
+### №2 Trello wrapper
 
 Use Trello API to fit following flow of usage
 
@@ -41,12 +41,12 @@ Put in Rails console
   puts board.lists # check board lists and find nessesary list ID
   board.create_card!(title: "some_title", description: "some_description", list_id: "board_list_id")
 ```
-###№3 Rake Task and Sidekiq Worker
+### №3 Rake Task and Sidekiq Worker
 
 Rake task that query Rubygems API for all the versions of Rails gem.
 Check versions in local DB and download it if not found.
 
-####Configuration
+#### Configuration
 
 Copy config/app.expample.yml to config/app.yml and put your settings.
 Before use sidekiq install [redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04)
@@ -66,19 +66,19 @@ Put in console
 ```
 to check gem with name 'gem_name'
 
-###№4 Template
+## #№4 Template
 
 A responsive design.
 
 put `/template` in your adress bar to see the page
 
-###№5 Storage
+### №5 Storage
 
 Allow to add pictures via S3 Amazon services.
 Use dragonfly gem to add picrures.
 Shows all uploaded pictures in 100x100px format.
 
-####Configuration
+#### Configuration
 
 Add S3 variables to environments in secrets.yml for example
 ```
