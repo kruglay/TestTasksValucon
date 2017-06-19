@@ -72,7 +72,7 @@ A responsive design.
 
 put `/template` in your adress bar to see the page
 
-### №5 Storage
+## №5 Storage
 
 Allow to add pictures via S3 Amazon services.
 Use dragonfly gem to add picrures.
